@@ -1,7 +1,53 @@
 /*
  * Create a list that holds all of your cards
  */
+const cards = [{
+		
+		name: 'diamond',
+		class: 'card',
+		type: 'fa fa-diamond'                                                                                                                                                  
+	},
+	{
+		name: 'plane',
+		class: 'card',
+		type: 'fa fa-paper-plane-o'  
+	},
+	{
+		name: 'anchor',
+		class: 'card',
+		type: 'fa fa-anchor'  
+	},
+	{
+		name: 'bolt',
+		class: 'card',
+		type: 'fa fa-bolt'  
+	},
+	{
+		name: 'cube',
+		class: 'card',
+		type: 'fa fa-cube'  
+	},
+	{
+		name: 'leaf',
+		class: 'card',
+		type: 'fa fa-leaf'  
+	},
+	{
+		name: 'bicycle',
+		class: 'card',
+		type: 'fa fa-bicycle'  
+	},
+	{
+		name: 'bomb',
+		class: 'card',
+		type: 'fa fa-bomb'
+	}
+];
 
+const cardsList = [...cards, ...cards];
+console.log (cardsList);
+const deck = document.querySelector('.deck');
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
 
 /*
  * Display the cards on the page
@@ -9,6 +55,12 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+ const shuffledCardsList = shuffle(cardsList); 
+ for (let card in shuffledCardsList) {
+ 	const element = `<li class="${shuffledCardsList[card].class} ${shuffledCardsList[card].type} show" ></li>`;
+ 	deck.innerHTML += element;
+ }
+ 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
