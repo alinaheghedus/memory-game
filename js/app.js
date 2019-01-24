@@ -44,6 +44,7 @@ const cards = [{
 	}
 ];
 
+// Create the cards list
 const cardsList = [...cards, ...cards];
 console.log (cardsList);
 const deck = document.querySelector('.deck');
@@ -56,11 +57,14 @@ const deck = document.querySelector('.deck');
  *   - add each card's HTML to the page
  */
  const shuffledCardsList = shuffle(cardsList); 
- for (let card in shuffledCardsList) {
- 	const element = `<li class="${shuffledCardsList[card].class} ${shuffledCardsList[card].type} show" ></li>`;
- 	deck.innerHTML += element;
- }
- 
+
+ // Load cards function
+function loadCards () {
+ 	for (let card in shuffledCardsList) {
+ 		const element = `<li class="${shuffledCardsList[card].class} ${shuffledCardsList[card].type.hide} " ></li>`;
+ 		deck.innerHTML += element;
+ 	}
+} 
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -75,7 +79,10 @@ function shuffle(array) {
     }
 
     return array;
-}
+};
+
+// start game
+loadCards();
 
 
 /*
