@@ -44,6 +44,11 @@ const cards = [{
 	}
 ];
 
+// other variables used
+var eStop = 0;
+var pairs = [];
+
+
 // Create the cards list
 const cardsList = [...cards, ...cards];
 console.log (cardsList);
@@ -61,7 +66,7 @@ const deck = document.querySelector('.deck');
  // Load cards function
 function loadCards () {
  	for (let card in shuffledCardsList) {
- 		const element = `<li class="${shuffledCardsList[card].class} ${shuffledCardsList[card].type.hide} " ></li>`;
+ 		const element = `<i class='${shuffledCardsList[card].class} ${shuffledCardsList[card].type}'></i>`;
  		deck.innerHTML += element;
  	}
 } 
@@ -84,7 +89,23 @@ function shuffle(array) {
 // start game
 loadCards();
 
+deck.addEventListener ('click', function (event) {
+	if (event.target.tagName === 'I' &&
+		eStop < 2 ) {
+			eStop += 1;
+			event.target.classList.add('show');
+		pairs.push(event.target.className);	
+	}
+	comparePairs();
+}) 
 
+function comparePairs () {
+	if(pairs[0] === pairs[1]) {
+		let seenCards = document.getElementsByClassName('show');
+		seenCards[1].classList.replace('show', 'match');
+		seenCards[0].classList.replace('show', 'match');
+	}
+}
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
