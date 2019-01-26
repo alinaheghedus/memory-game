@@ -53,6 +53,7 @@ var pairs = [];
 const cardsList = [...cards, ...cards];
 console.log (cardsList);
 const deck = document.querySelector('.deck');
+
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 
 /*
@@ -95,8 +96,10 @@ deck.addEventListener ('click', function (event) {
 			eStop += 1;
 			event.target.classList.add('show');
 		pairs.push(event.target.className);	
+	if (pairs.length === 2) {
+		comparePairs();
 	}
-	comparePairs();
+	}	
 }) 
 
 function comparePairs () {
@@ -104,8 +107,36 @@ function comparePairs () {
 		let seenCards = document.getElementsByClassName('show');
 		seenCards[1].classList.replace('show', 'match');
 		seenCards[0].classList.replace('show', 'match');
-	}
+		eStop = 0;
+	} else {
+		console.log('unmatch');
+		setTimeout(function (){
+				let seenCards = document.getElementsByClassName('show');
+				seenCards[1].classList.remove('show');
+				seenCards[0].classList.remove('show');
+				eStop = 0;
+			},
+			1000
+		);
+	};
+	pairs.pop();
+	pairs.pop();
+	successModal();
 }
+
+const successModal = function () {
+	let container = document.getElementsByClassName('container');
+	let matched = document.getElementsByClassName('match');
+	let modal = document.createElement('div');
+	let modalInfo = 
+			`<h3>Great Success!</h3>
+			<div>Your Time: ${minutesCounter} : ${secondsCounter}</div>
+			<div>Your Stars: ${rating.textContent}</div>
+			<h4 id="restartButton"><a href="#" id="restartGame">Replay?</a></h4>`;
+	modal.setAttribute('class', 'modal');
+	modal.innerHTML = modalInfo;
+}
+
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
