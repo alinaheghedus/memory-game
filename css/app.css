@@ -23,15 +23,29 @@ body {
 
 .container {
     display: flex;
+    width: 100%;
+    margin: 0 auto;
     justify-content: center;
     align-items: center;
     flex-direction: column;
 }
 
+.modal {
+    background-color: rgba(168, 140, 196, 0.8);
+    width: 55%;
+    height: 400px;
+    margin: 0 auto;
+    margin-top: -600px;
+    text-align: center;
+    border-radius: 4px;
+    z-index: 100;
+}           
+
 h1 {
     font-family: 'Open Sans', sans-serif;
     font-weight: 300;
 }
+
 
 /*
  * Styles for the deck of cards
