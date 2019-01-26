@@ -47,12 +47,20 @@ const cards = [{
 // other variables used
 var eStop = 0;
 var pairs = [];
+var movesCount = 0;
+var secondsCount = 0;
+var minutesCount = 0;
+var time = 0;
+var score = document.querySelector ('.score-panel');
+var restart = document.querySelector('.restart');
 
 
 // Create the cards list
 const cardsList = [...cards, ...cards];
 console.log (cardsList);
 const deck = document.querySelector('.deck');
+
+
 
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
 
@@ -130,13 +138,29 @@ const successModal = function () {
 	let modal = document.createElement('div');
 	let modalInfo = 
 			`<h3>Great Success!</h3>
-			<div>Your Time: ${minutesCounter} : ${secondsCounter}</div>
-			<div>Your Stars: ${rating.textContent}</div>
+			<div>Your Time: ${minutesCount} : ${secondsCount}</div>
+			<div>Your Stars: ${score.textContent}</div>
 			<h4 id="restartButton"><a href="#" id="restartGame">Replay?</a></h4>`;
 	modal.setAttribute('class', 'modal');
 	modal.innerHTML = modalInfo;
-}
 
+	if (matched.length === 16) {
+		setTimeout (function () {
+			container[0].appendChild(modal);
+			let restartGame = document.getElementById ('restartGame');
+
+			restartGame.addEventListener ('click', function(event) {
+				event.preventDefault();
+				window.location.reload(true);
+			})
+		}, 600)
+	};
+};
+
+restart.addEventListener ('click', function (event) {
+	event.preventDefault();
+	window.location.reload(true);
+});
 /*
  * set up the event listener for a card. If a card is clicked:
  *  - display the card's symbol (put this functionality in another function that you call from this one)
