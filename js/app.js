@@ -51,7 +51,8 @@ var movesCount = 0;
 var secondsCount = 0;
 var minutesCount = 0;
 var time = 0;
-var score = document.querySelector ('.score-panel');
+var score = document.querySelector ('.stars');
+var moves = document.querySelector ('.moves');
 var restart = document.querySelector('.restart');
 
 
@@ -104,11 +105,44 @@ deck.addEventListener ('click', function (event) {
 			eStop += 1;
 			event.target.classList.add('show');
 		pairs.push(event.target.className);	
+
+	movesCount += 1;
+	moves.textContent = `Moves: ${movesCount}`;
+	
+	if (movesCount === 1) {
+			timer();
+	} else if (movesCount <=20) {
+		score.innerHTML = `Score: 
+			<li><i class="fa fa-star"></i></li>
+			<li><i class="fa fa-star"></i></li>
+			<li><i class="fa fa-star"></i></li>`;
+	} else if (movesCount <40) {
+		score.innerHTML = `Score: 
+			<li><i class="fa fa-star"></i></li>
+			<li><i class="fa fa-star"></i></li>`;
+	} else {
+		score.innerHTML= `Score: 
+			<li><i class="fa fa-star"></i></li>`;
+		};
+
 	if (pairs.length === 2) {
 		comparePairs();
 	}
 	}	
 }) 
+
+let timeCount;
+const timer = function () {
+	timeCount = setInterval(function () {
+		secondsCount += 1;
+		if (secondsCount === 60) {
+			minutesCount += 1;
+			secondsCount = 0;
+		};	
+		time.innerText = `Time:  ${minutesCount}:${secondsCount}`;
+	}
+	, 1000);
+};
 
 function comparePairs () {
 	if(pairs[0] === pairs[1]) {
@@ -139,7 +173,7 @@ const successModal = function () {
 	let modalInfo = 
 			`<h3>Great Success!</h3>
 			<div>Your Time: ${minutesCount} : ${secondsCount}</div>
-			<div>Your Stars: ${score.textContent}</div>
+			<div>${score.textContent}</div>
 			<h4 id="restartButton"><a href="#" id="restartGame">Replay?</a></h4>`;
 	modal.setAttribute('class', 'modal');
 	modal.innerHTML = modalInfo;
