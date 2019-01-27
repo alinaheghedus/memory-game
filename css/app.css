@@ -39,7 +39,15 @@ body {
     text-align: center;
     border-radius: 4px;
     z-index: 100;
-}           
+}      
+
+.bullet {
+    list-style: none;
+}     
+
+.bullet li {
+    display: inline-block;
+}   
 
 h1 {
     font-family: 'Open Sans', sans-serif;

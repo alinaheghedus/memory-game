@@ -50,7 +50,7 @@ var pairs = [];
 var movesCount = 0;
 var secondsCount = 0;
 var minutesCount = 0;
-var time = 0;
+var time = document.querySelector ('.time');
 var score = document.querySelector ('.stars');
 var moves = document.querySelector ('.moves');
 var restart = document.querySelector('.restart');
@@ -163,6 +163,8 @@ function comparePairs () {
 	};
 	pairs.pop();
 	pairs.pop();
+	let timeStop = `Time:  ${minutesCount}:${secondsCount}`;
+	time.innerHTML = timeStop;
 	successModal();
 }
 
@@ -173,12 +175,13 @@ const successModal = function () {
 	let modalInfo = 
 			`<h3>Great Success!</h3>
 			<div>Your Time: ${minutesCount} : ${secondsCount}</div>
-			<div>${score.textContent}</div>
+			<div class="bullet">${score.innerHTML}</div>
 			<h4 id="restartButton"><a href="#" id="restartGame">Replay?</a></h4>`;
 	modal.setAttribute('class', 'modal');
 	modal.innerHTML = modalInfo;
 
 	if (matched.length === 16) {
+		clearInterval(timeCount);
 		setTimeout (function () {
 			container[0].appendChild(modal);
 			let restartGame = document.getElementById ('restartGame');
