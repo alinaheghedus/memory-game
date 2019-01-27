@@ -118,6 +118,13 @@ ul.deck {
     margin-bottom: 10px;
 }
 
+.score-panel ul,
+.score-panel span,
+.score-panel div {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
 .score-panel .stars {
     margin: 0;
     padding: 0;
