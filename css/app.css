@@ -19,6 +19,7 @@ body {
 body {
     background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
     font-family: 'Coda', cursive;
+
 }
 
 .container {
@@ -37,8 +38,9 @@ body {
     margin: 0 auto;
     margin-top: -600px;
     text-align: center;
-    border-radius: 4px;
+    border-radius: 9px;
     z-index: 100;
+    font-size: 30px;
 }      
 
 .bullet {
@@ -51,7 +53,11 @@ body {
 
 h1 {
     font-family: 'Open Sans', sans-serif;
-    font-weight: 300;
+    font-weight: 500;
+    font-size: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+    color: rgb(115, 0, 230);
 }
 
 
@@ -60,8 +66,8 @@ h1 {
  */
 
 .deck {
-    width: 660px;
-    min-height: 680px;
+    width: 610px;
+    height: 610px;
     background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
@@ -76,6 +82,7 @@ h1 {
 .deck .card {
     height: 125px;
     width: 125px;
+    padding: 12px;
     background: #2e3d49;
     font-size: 0;
     color: #ffffff;
@@ -114,8 +121,9 @@ ul.deck {
 
 .score-panel {
     text-align: left;
-    width: 345px;
+    width: 400px;
     margin-bottom: 10px;
+    background-color: rgb(204, 204, 255);
 }
 
 .score-panel ul,
@@ -123,13 +131,14 @@ ul.deck {
 .score-panel div {
     padding-left: 15px;
     padding-right: 15px;
+    font-size: 18px;
 }
 
 .score-panel .stars {
     margin: 0;
     padding: 0;
     display: inline-block;
-    margin: 0 5px 0 0;
+    margin: 0 3px 0 0;
 }
 
 .score-panel .stars li {
@@ -141,3 +150,84 @@ ul.deck {
     float: right;
     cursor: pointer;
 }
+
+
+/* tablet media query*/
+@media only screen and (max-width: 768px) {
+    .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .deck {
+        width: 550px;
+        height: 550px;
+        padding: 24px;
+    }
+
+    .deck .card {
+        height: 115px;
+        width: 115px;
+    }
+
+    .modal {
+        width: 70%;
+        height: 280px;
+        margin-top: -450px;
+        border-radius: 7px;
+        font-size: 24px;
+    }
+
+    .score-panel ul,
+    .score-panel span,
+    .score-panel div {
+        font-size: 20px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 40px;
+    }
+
+
+ }   
+
+@media only screen and (max-width: 550px) {
+    .container {
+        width: 100%;
+        margin: 0 auto;
+    }
+
+    .deck {
+        width: 450px;
+        height: 450px;
+        padding: 16px;
+    }
+
+    .deck .card {
+        height: 95px;
+        width: 95px;
+        background-color: green;
+    }
+
+    .modal {
+        width: 70%;
+        height: 280px;
+        margin-top: -400px;
+        border-radius: 5px;
+        font-size: 22px;
+    }
+
+    .score-panel ul,
+    .score-panel span,
+    .score-panel div {
+        font-size: 18px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 40px;
+    }
+
+
+ }   

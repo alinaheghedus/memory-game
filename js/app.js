@@ -44,12 +44,13 @@ const cards = [{
 	}
 ];
 
-// other variables used
+// variables used
 var eStop = 0;
 var pairs = [];
 var movesCount = 0;
 var secondsCount = 0;
 var minutesCount = 0;
+var timeCount;
 var time = document.querySelector ('.time');
 var score = document.querySelector ('.stars');
 var moves = document.querySelector ('.moves');
@@ -60,10 +61,7 @@ var restart = document.querySelector('.restart');
 const cardsList = [...cards, ...cards];
 console.log (cardsList);
 const deck = document.querySelector('.deck');
-
-
-
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
 
 /*
  * Display the cards on the page
@@ -99,6 +97,17 @@ function shuffle(array) {
 // start game
 loadCards();
 
+/*
+ * set up the event listener for a card. If a card is clicked:
+ *  - display the card's symbol (put this functionality in another function that you call from this one)
+ *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
+ *  - if the list already has another card, check to see if the two cards match
+ *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
+ *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
+ *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
+ *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
+ */
+
 deck.addEventListener ('click', function (event) {
 	if (event.target.tagName === 'I' &&
 		eStop < 2 ) {
@@ -131,7 +140,7 @@ deck.addEventListener ('click', function (event) {
 	}	
 }) 
 
-let timeCount;
+
 const timer = function () {
 	timeCount = setInterval(function () {
 		secondsCount += 1;
