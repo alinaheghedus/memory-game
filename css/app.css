@@ -1,3 +1,4 @@
+
 html {
     box-sizing: border-box;
 }
@@ -192,6 +193,7 @@ ul.deck {
 
  }   
 
+/*media query for small device */
 @media only screen and (max-width: 550px) {
     .container {
         width: 100%;

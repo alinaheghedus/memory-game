@@ -97,17 +97,8 @@ function shuffle(array) {
 // start game
 loadCards();
 
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
 
+// event listener to flip cards
 deck.addEventListener ('click', function (event) {
 	if (event.target.tagName === 'I' &&
 		eStop < 2 ) {
@@ -118,6 +109,7 @@ deck.addEventListener ('click', function (event) {
 	movesCount += 1;
 	moves.textContent = `Moves: ${movesCount}`;
 	
+	// counter for number of moves
 	if (movesCount === 1) {
 			timer();
 	} else if (movesCount <=20) {
@@ -140,7 +132,7 @@ deck.addEventListener ('click', function (event) {
 	}	
 }) 
 
-
+// game timer
 const timer = function () {
 	timeCount = setInterval(function () {
 		secondsCount += 1;
@@ -153,6 +145,7 @@ const timer = function () {
 	, 1000);
 };
 
+// function to compare pair of open cards
 function comparePairs () {
 	if(pairs[0] === pairs[1]) {
 		let seenCards = document.getElementsByClassName('show');
@@ -177,6 +170,8 @@ function comparePairs () {
 	successModal();
 }
 
+
+// modal appears after completing the game
 const successModal = function () {
 	let container = document.getElementsByClassName('container');
 	let matched = document.getElementsByClassName('match');
@@ -203,17 +198,9 @@ const successModal = function () {
 	};
 };
 
+// restart the game
 restart.addEventListener ('click', function (event) {
 	event.preventDefault();
 	window.location.reload(true);
 });
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
+
